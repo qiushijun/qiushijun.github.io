@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Apache,大数据,分布式," />
+  <meta name="keywords" content="ECharts,Java,报表," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="使用 Apache Pig 从大数据集中获得所需的信息Apache Pig 是一个高级过程语言，适合于使用 Hadoop 和 MapReduce 平台来查询大型半结构化数据集。通过允许对分布式数据集进行类似 SQL 的查询，Pig 可以简化 Hadoop 的使用。本文将探索 Pig 背后的语言，并在一个简单的 Hadoop 集群中发现其用途。">
+<meta name="description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 Apache Pig 处理数据">
-<meta property="og:url" content="https://qiushijun.github.io/2017/02/15/apachepig/index.html">
+<meta property="og:title" content="ECharts-Java 详细介绍">
+<meta property="og:url" content="https://qiushijun.github.io/2017/02/16/echarts-java/index.html">
 <meta property="og:site_name" content="三湘古邑">
-<meta property="og:description" content="使用 Apache Pig 从大数据集中获得所需的信息Apache Pig 是一个高级过程语言，适合于使用 Hadoop 和 MapReduce 平台来查询大型半结构化数据集。通过允许对分布式数据集进行类似 SQL 的查询，Pig 可以简化 Hadoop 的使用。本文将探索 Pig 背后的语言，并在一个简单的 Hadoop 集群中发现其用途。">
-<meta property="og:updated_time" content="2017-02-16T01:21:59.000Z">
+<meta property="og:description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
+<meta property="og:updated_time" content="2017-02-16T01:26:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Apache Pig 处理数据">
-<meta name="twitter:description" content="使用 Apache Pig 从大数据集中获得所需的信息Apache Pig 是一个高级过程语言，适合于使用 Hadoop 和 MapReduce 平台来查询大型半结构化数据集。通过允许对分布式数据集进行类似 SQL 的查询，Pig 可以简化 Hadoop 的使用。本文将探索 Pig 背后的语言，并在一个简单的 Hadoop 集群中发现其用途。">
+<meta name="twitter:title" content="ECharts-Java 详细介绍">
+<meta name="twitter:description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://qiushijun.github.io/2017/02/15/apachepig/"/>
+  <link rel="canonical" href="https://qiushijun.github.io/2017/02/16/echarts-java/"/>
 
 
 
 
 
-  <title> 使用 Apache Pig 处理数据 | 三湘古邑 </title>
+  <title> ECharts-Java 详细介绍 | 三湘古邑 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/02/15/apachepig/">
+  <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/02/16/echarts-java/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="三湘古邑">
@@ -291,7 +291,7 @@
             
             
               
-                使用 Apache Pig 处理数据
+                ECharts-Java 详细介绍
               
             
           </h1>
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-15T22:13:38+08:00">
-                2017-02-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T08:58:58+08:00">
+                2017-02-16
               </time>
             
 
@@ -325,8 +325,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/15/apachepig/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/15/apachepig/" itemprop="commentCount"></span>
+                <a href="/2017/02/16/echarts-java/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/echarts-java/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,14 +352,54 @@
       
 
       
-        <h2 id="使用-Apache-Pig-从大数据集中获得所需的信息"><a href="#使用-Apache-Pig-从大数据集中获得所需的信息" class="headerlink" title="使用 Apache Pig 从大数据集中获得所需的信息"></a>使用 Apache Pig 从大数据集中获得所需的信息</h2><p>Apache Pig 是一个高级过程语言，适合于使用 Hadoop 和 MapReduce 平台来查询大型半结构化数据集。通过允许对分布式数据集进行类似 SQL 的查询，Pig 可以简化 Hadoop 的使用。本文将探索 Pig 背后的语言，并在一个简单的 Hadoop 集群中发现其用途。<br><a id="more"></a><br>Hadoop 的普及和其生态系统的不断壮大并不令人感到意外。Hadoop 不断进步的一个特殊领域是 Hadoop 应用程序的编写。虽然编写 Map 和 Reduce 应用程序并不十分复杂，但这些编程确实需要一些软件开发经验。Apache Pig 改变了这种状况，它在 MapReduce 的基础上创建了更简单的过程语言抽象，为 Hadoop 应用程序提供了一种更加接近结构化查询语言 (SQL) 的接口。因此，您不需要编写一个单独的 MapReduce 应用程序，您可以用 Pig Latin 语言写一个脚本，在集群中自动并行处理与分发该脚本。</p>
-<h2 id="Pig-Latin-示例"><a href="#Pig-Latin-示例" class="headerlink" title="Pig Latin 示例"></a>Pig Latin 示例</h2><p>让我们从一个简单的 Pig 示例开始介绍，并剖析该示例。Hadoop 的一个有趣的用法是，在大型数据集中搜索满足某个给定搜索条件的记录（在 Linux® 中被称为 grep）。清单 1 显示了在 Pig 中实现该过程的简单性。在所显示的三行代码中，只有一行是真正的搜索。第一行只是将测试数据集（消息日志）读取到代表元组集合的包中。用一个正则表达式来筛选该数据（元组中的惟一条目，表示为 $0 或 field 1），然后查找字符序列 WARN。最后，在主机文件系统中将这个包存储在一个名为 warnings 的新文件中，这个包现在代表来自消息的包含 WARN 的所有元组。</p>
-<h4 id="清单-1-一个简单的-Pig-Latin-脚本"><a href="#清单-1-一个简单的-Pig-Latin-脚本" class="headerlink" title="清单 1. 一个简单的 Pig Latin 脚本"></a>清单 1. 一个简单的 Pig Latin 脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">messages = LOAD &apos;messages&apos;;</div><div class="line">warns = FILTER messages BY $0 MATCHES &apos;.*WARN+.*&apos;;</div><div class="line">STORE warns INTO &apos;warnings&apos;;</div></pre></td></tr></table></figure>
-<p>如您所见，这个简单的脚本实现了一个简单的流，但是，如果直接在传统的 MapReduce 模型中实现它，则需要增加大量的代码。这使得学习 Hadoop 并开始使用数据比原始开发容易得多。<br>现在让我们更深入地探讨 Pig 语言，然后查看该语言的一些功能的其他示例。</p>
-<p><blockquote class="blockquote-center">Pig Latin 的基础知识</blockquote><br>Pig Latin 是一个相对简单的语言，它可以执行语句。一调语句 就是一个操作，它需要输入一些内容（比如代表一个元组集的包），并发出另一个包作为其输出。一个包 就是一个关系，与表类似，您可以在关系数据库中找到它（其中，元组代表行，并且每个元组都由字段组成）。<br>用 Pig Latin 编写的脚本往往遵循以下特定格式，从文件系统读取数据，对数据执行一系列操作（以一种或多种方式转换它），然后，将由此产生的关系写回文件系统。您可以在 清单 1 中看到该模式的最简单形式（一个转换）。<br>Pig 拥有大量的数据类型，不仅支持包、元组和映射等高级概念，还支持简单的数据类型，如 int、long、float、double、chararray 和 bytearray。如果使用简单的类型，您会发现，除了称为 bincond 的条件运算符（其操作类似于 C ternary 运算符）之外，还有其他许多算术运算符（比如 add、subtract、multiply、divide 和 module）。并且，如您所期望的那样，还有一套完整的比较运算符，包括使用正则表达式的丰富匹配模式。<br>所有 Pig Latin 语句都需要对关系进行操作（并被称为关系运算符）。正如您在 清单 1 中看到的，有一个运算符用于从文件系统加载数据和将数据存储到文件系统中。有一种方式可以通过迭代关系的行来 FILTER 数据。此功能常用于从后续操作不再需要的关系中删除数据。另外，如果您需要对关系的列进行迭代，而不是对行进行迭代，您可以使用 FOREACH 运算符。FOREACH 允许进行嵌套操作，如 FILTER 和 ORDER，以便在迭代过程中转换数据。<br>ORDER 运算符提供了基于一个或多个字段对关系进行排序的功能。JOIN 运算符基于公共字段执行两个或两个以上的关系的内部或外部联接。SPLIT 运算符提供了根据用户定义的表达式将一个关系拆分成两个或两个以上关系的功能。最后，GROUP 运算符根据某个表达式将数据分组成为一个或多个关系。</p>
-<h4 id="Pig-中的部分关系运算符列表。"><a href="#Pig-中的部分关系运算符列表。" class="headerlink" title="Pig 中的部分关系运算符列表。"></a>Pig 中的部分关系运算符列表。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">FILTER	基于某个条件从关系中选择一组元组。</div><div class="line">FOREACH	对某个关系的元组进行迭代，生成一个数据转换。</div><div class="line">GROUP	将数据分组为一个或多个关系。</div><div class="line">JOIN	联接两个或两个以上的关系（内部或外部联接）。</div><div class="line">LOAD	从文件系统加载数据。</div><div class="line">ORDER	根据一个或多个字段对关系进行排序。</div><div class="line">SPLIT	将一个关系划分为两个或两个以上的关系。</div><div class="line">STORE	在文件系统中存储数据。</div></pre></td></tr></table></figure>
-<p>虽然这不是一个详尽的 Pig Latin 运算符清单，但该表提供了一套在处理大型数据集时非常有用的操作。您可以通过 <a href="http://pig.apache.org/" target="_blank" rel="external">http://pig.apache.org/</a> 了解完整的 Pig Latin 语言，因为 Pig 有一套不错的在线文档。现在尝试着手编写一些 Pig Latin 脚本，以了解这些运算符的实际工作情况。</p>
-
+        <p>这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option<br><a id="more"></a><br>本项目是一个供Java开发使用的ECharts的开发包，主要目的是方便在Java中构造ECharts中可能用到的全部数据结构，如完整的结构 Option。Option中的数据Series，包含Bar-柱状图，Line-折线图，Pie-饼图，Chord-和弦图等，支持ECharts中的 所有图表。支持所有的Style类，如AreaStyle,ChordStyle,ItemStyle,LineStyle,LinkStyle等等。支 持多种Data数据类型，一个通用的Data数据，以及PieData,MapData,ScatterData,KData等针对性的数据结构。</p>
+<p>你可以使用本项目直接构造一个Option对象，转换为JSON后直接用js设置myChart.setOption(option)，或者你也可以在前段构造基本的Option对象，然后使用本项目来构造其中需要的任意某部分的数据，如使用Series支持的图表类型创建Series数据。</p>
+<h3 id="关于本项目的最新状态和更新日志请看"><a href="#关于本项目的最新状态和更新日志请看" class="headerlink" title="关于本项目的最新状态和更新日志请看"></a>关于本项目的最新状态和更新日志请看</h3><p>github: <a href="https://github.com/abel533/ECharts" target="_blank" rel="external">https://github.com/abel533/ECharts</a></p>
+<h3 id="项目支持"><a href="#项目支持" class="headerlink" title="项目支持"></a>项目支持</h3><h4 id="图表类型"><a href="#图表类型" class="headerlink" title="图表类型"></a>图表类型</h4><ul>
+<li>Line - 折线（面积）图</li>
+<li>Bar - 柱状（条形）图</li>
+<li>Scatter - 散点（气泡）图</li>
+<li>K - K线图</li>
+<li>Pie - 饼（圆环）图</li>
+<li>Radar - 雷达（面积）图</li>
+<li>Chord - 和弦图</li>
+<li>Force - 力导向布局图</li>
+<li>Map - 地图</li>
+<li>Gauge - 仪表盘</li>
+<li>Funnel - 漏斗图</li>
+<li>Island - 孤岛图（官方未提供，这里只有数据Island对象）</li>
+<li>EventRiver - 事件河流图</li>
+<li>Venn - 韦恩图</li>
+<li>Tree - 树图</li>
+<li>Treemap - 矩形树图</li>
+<li>WordCloud - 词云</li>
+<li>Heatmap - 热力图</li>
+</ul>
+<h4 id="ECharts组件"><a href="#ECharts组件" class="headerlink" title="ECharts组件"></a>ECharts组件</h4><ul>
+<li>Axis - 坐标轴</li>
+<li>Grid - 网格</li>
+<li>Title - 标题</li>
+<li>Tooltip - 提示</li>
+<li>Legend - 图例</li>
+<li>DataZoom - 数据区域缩放</li>
+<li>DataRange - 值域漫游</li>
+<li>Toolbox - 工具箱</li>
+</ul>
+<h4 id="Option说明"><a href="#Option说明" class="headerlink" title="Option说明"></a>Option说明</h4><ol>
+<li>Option正式代码中使用，不需要任何依赖。</li>
+<li>GsonOption正式代码中可以使用，需要引入Gson包，使用toString()方法可以转换为JSON结构的数据（支持function，详情看下面的function说明）。</li>
+<li>EnhancedOption测试专用，主要方便在浏览器中直接查看效果。</li>
+</ol>
+<h4 id="function说明"><a href="#function说明" class="headerlink" title="function说明"></a>function说明</h4><p>由于JSON标准中不包含function类型，因而大多数的JSON库都不直接支持这种类型，处理这种类型最简单的方式就是转换为JSON字符串时，对字符串进行处理。<br>虽然像jackson json和fastjson通过注解或者自定义的实现序列化接口可以实现，毕竟和JSON库的结合太密切了，而且使用起来也很麻烦，不如直接处理字符串，或者在js中处理。<br>本项目中提供了GSON实现的GsonOption，就是重写了toString()方法，改为输出JSON结构的字符串，并且支持以下两种function形式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    formatter:function(value)&#123;</div><div class="line">        return value.substring(0,8);</div><div class="line">    &#125;&#125;//和&#123;</div><div class="line">    formatter:(function()&#123;</div><div class="line">        return &apos;Temperature : &lt;br/&gt;&#123;b&#125;km : &#123;c&#125;°C&apos;;</div><div class="line">    &#125;)()</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>当然这种形式在Java中书写的时候有着严格的要求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">option.tooltip().trigger(Trigger.axis).formatter(&quot;function(value)&#123;return value.substring(0,8);&#125;&quot;);option.tooltip().trigger(Trigger.axis).formatter(&quot;(function()&#123;return &apos;Temperature : &lt;br/&gt;&#123;b&#125;km : &#123;c&#125;°C&apos;;&#125;)()&quot;);</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>先看第一种，这里的”function中，双引号和function必须连着，中间不能存在空格，否则不会识别。然后是结尾的}”，这里也必须连着不能有空格，在首尾这两段代码之间不能出现}”，否则会判断出错。如果在{}中的代码有字符串，请使用单引号’，双引号出现在单引号内时使用\”即可。除此之外没有别的限制。</p>
+</li>
+<li><p>再看第二种，这里的”(function中，双引号、括号和function必须连着，中间不能存在空格，否则不会识别。然后是结尾的})()”，这里也必须连着不能有空格，在首尾这两段代码之间不能出现})()”，否则会判断出错。如果在{}中的代码有字符串，请使用单引号’，双引号出现在单引号内时使用\”即可。除此之外没有别的限制。</p>
+</li>
+</ol>
+<h6 id="上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"><a href="#上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option" class="headerlink" title="上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"></a>上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option</h6>
       
     </div>
 
@@ -382,11 +422,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Apache/" rel="tag"># Apache</a>
+            <a href="/tags/ECharts/" rel="tag"># ECharts</a>
           
-            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/分布式/" rel="tag"># 分布式</a>
+            <a href="/tags/报表/" rel="tag"># 报表</a>
           
         </div>
       
@@ -399,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/14/optaplanner/" rel="next" title="OptaPlanner：业务规划与资源调度优化求解程序">
-                <i class="fa fa-chevron-left"></i> OptaPlanner：业务规划与资源调度优化求解程序
+              <a href="/2017/02/15/apachepig/" rel="next" title="使用 Apache Pig 处理数据">
+                <i class="fa fa-chevron-left"></i> 使用 Apache Pig 处理数据
               </a>
             
           </div>
@@ -408,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/16/echarts-java/" rel="prev" title="ECharts-Java 详细介绍">
-                ECharts-Java 详细介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -426,10 +462,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/15/apachepig/"
-     data-title="使用 Apache Pig 处理数据"
+        <div class="ds-share flat" data-thread-key="2017/02/16/echarts-java/"
+     data-title="ECharts-Java 详细介绍"
      data-content=""
-     data-url="https://qiushijun.github.io/2017/02/15/apachepig/">
+     data-url="https://qiushijun.github.io/2017/02/16/echarts-java/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -459,8 +495,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/15/apachepig/"
-           data-title="使用 Apache Pig 处理数据" data-url="https://qiushijun.github.io/2017/02/15/apachepig/">
+      <div class="ds-thread" data-thread-key="2017/02/16/echarts-java/"
+           data-title="ECharts-Java 详细介绍" data-url="https://qiushijun.github.io/2017/02/16/echarts-java/">
       </div>
     
   </div>
@@ -573,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Apache-Pig-从大数据集中获得所需的信息"><span class="nav-number">1.</span> <span class="nav-text">使用 Apache Pig 从大数据集中获得所需的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pig-Latin-示例"><span class="nav-number">2.</span> <span class="nav-text">Pig Latin 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#清单-1-一个简单的-Pig-Latin-脚本"><span class="nav-number">2.0.1.</span> <span class="nav-text">清单 1. 一个简单的 Pig Latin 脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pig-中的部分关系运算符列表。"><span class="nav-number">2.0.2.</span> <span class="nav-text">Pig 中的部分关系运算符列表。</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于本项目的最新状态和更新日志请看"><span class="nav-number">1.</span> <span class="nav-text">关于本项目的最新状态和更新日志请看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目支持"><span class="nav-number">2.</span> <span class="nav-text">项目支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图表类型"><span class="nav-number">2.1.</span> <span class="nav-text">图表类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECharts组件"><span class="nav-number">2.2.</span> <span class="nav-text">ECharts组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Option说明"><span class="nav-number">2.3.</span> <span class="nav-text">Option说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function说明"><span class="nav-number">2.4.</span> <span class="nav-text">function说明</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"><span class="nav-number">2.4.0.1.</span> <span class="nav-text">上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
