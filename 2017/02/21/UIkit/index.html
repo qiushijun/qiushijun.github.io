@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ECharts,Java,报表," />
+  <meta name="keywords" content="Web前端," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
+<meta name="description" content="UIkit 是 YOOtheme 团队开发的一款轻量级、模块化的前端框架，可快速构建强大的web前端界面。UIKit提供了全面的HTML、CSS及JS组件，它们使用简单，容易定制和扩展。它基于LESS开发，代码结构清晰简单，易于扩展和维护，并且具有体积小、反应灵敏的响应式组件，你可以根据 UIKit 基本的风格样式，轻松地自定义创建出自己喜欢的主题样式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECharts-Java 详细介绍">
-<meta property="og:url" content="https://qiushijun.github.io/2017/02/16/echarts-java/index.html">
+<meta property="og:title" content="UIkit">
+<meta property="og:url" content="https://qiushijun.github.io/2017/02/21/UIkit/index.html">
 <meta property="og:site_name" content="三湘古邑">
-<meta property="og:description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
-<meta property="og:updated_time" content="2017-02-16T01:26:36.000Z">
+<meta property="og:description" content="UIkit 是 YOOtheme 团队开发的一款轻量级、模块化的前端框架，可快速构建强大的web前端界面。UIKit提供了全面的HTML、CSS及JS组件，它们使用简单，容易定制和扩展。它基于LESS开发，代码结构清晰简单，易于扩展和维护，并且具有体积小、反应灵敏的响应式组件，你可以根据 UIKit 基本的风格样式，轻松地自定义创建出自己喜欢的主题样式。">
+<meta property="og:updated_time" content="2017-02-21T13:56:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ECharts-Java 详细介绍">
-<meta name="twitter:description" content="这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option">
+<meta name="twitter:title" content="UIkit">
+<meta name="twitter:description" content="UIkit 是 YOOtheme 团队开发的一款轻量级、模块化的前端框架，可快速构建强大的web前端界面。UIKit提供了全面的HTML、CSS及JS组件，它们使用简单，容易定制和扩展。它基于LESS开发，代码结构清晰简单，易于扩展和维护，并且具有体积小、反应灵敏的响应式组件，你可以根据 UIKit 基本的风格样式，轻松地自定义创建出自己喜欢的主题样式。">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://qiushijun.github.io/2017/02/16/echarts-java/"/>
+  <link rel="canonical" href="https://qiushijun.github.io/2017/02/21/UIkit/"/>
 
 
 
 
 
-  <title> ECharts-Java 详细介绍 | 三湘古邑 </title>
+  <title> UIkit | 三湘古邑 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/02/16/echarts-java/">
+  <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/02/21/UIkit/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="三湘古邑">
@@ -291,7 +291,7 @@
             
             
               
-                ECharts-Java 详细介绍
+                UIkit
               
             
           </h1>
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-16T08:58:58+08:00">
-                2017-02-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-21T21:53:53+08:00">
+                2017-02-21
               </time>
             
 
@@ -325,8 +325,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/16/echarts-java/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/echarts-java/" itemprop="commentCount"></span>
+                <a href="/2017/02/21/UIkit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/21/UIkit/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,54 +352,9 @@
       
 
       
-        <p>这是一个针对 ECharts 2.0 版本的Java类库，实现了所有ECharts中的Json结构对应的Java对象，并且可以很方便的创建Option<br><a id="more"></a><br>本项目是一个供Java开发使用的ECharts的开发包，主要目的是方便在Java中构造ECharts中可能用到的全部数据结构，如完整的结构 Option。Option中的数据Series，包含Bar-柱状图，Line-折线图，Pie-饼图，Chord-和弦图等，支持ECharts中的 所有图表。支持所有的Style类，如AreaStyle,ChordStyle,ItemStyle,LineStyle,LinkStyle等等。支 持多种Data数据类型，一个通用的Data数据，以及PieData,MapData,ScatterData,KData等针对性的数据结构。</p>
-<p>你可以使用本项目直接构造一个Option对象，转换为JSON后直接用js设置myChart.setOption(option)，或者你也可以在前段构造基本的Option对象，然后使用本项目来构造其中需要的任意某部分的数据，如使用Series支持的图表类型创建Series数据。</p>
-<h3 id="关于本项目的最新状态和更新日志请看"><a href="#关于本项目的最新状态和更新日志请看" class="headerlink" title="关于本项目的最新状态和更新日志请看"></a>关于本项目的最新状态和更新日志请看</h3><p>github: <a href="https://github.com/abel533/ECharts" target="_blank" rel="external">https://github.com/abel533/ECharts</a></p>
-<h3 id="项目支持"><a href="#项目支持" class="headerlink" title="项目支持"></a>项目支持</h3><h4 id="图表类型"><a href="#图表类型" class="headerlink" title="图表类型"></a>图表类型</h4><ul>
-<li>Line - 折线（面积）图</li>
-<li>Bar - 柱状（条形）图</li>
-<li>Scatter - 散点（气泡）图</li>
-<li>K - K线图</li>
-<li>Pie - 饼（圆环）图</li>
-<li>Radar - 雷达（面积）图</li>
-<li>Chord - 和弦图</li>
-<li>Force - 力导向布局图</li>
-<li>Map - 地图</li>
-<li>Gauge - 仪表盘</li>
-<li>Funnel - 漏斗图</li>
-<li>Island - 孤岛图（官方未提供，这里只有数据Island对象）</li>
-<li>EventRiver - 事件河流图</li>
-<li>Venn - 韦恩图</li>
-<li>Tree - 树图</li>
-<li>Treemap - 矩形树图</li>
-<li>WordCloud - 词云</li>
-<li>Heatmap - 热力图</li>
-</ul>
-<h4 id="ECharts组件"><a href="#ECharts组件" class="headerlink" title="ECharts组件"></a>ECharts组件</h4><ul>
-<li>Axis - 坐标轴</li>
-<li>Grid - 网格</li>
-<li>Title - 标题</li>
-<li>Tooltip - 提示</li>
-<li>Legend - 图例</li>
-<li>DataZoom - 数据区域缩放</li>
-<li>DataRange - 值域漫游</li>
-<li>Toolbox - 工具箱</li>
-</ul>
-<h4 id="Option说明"><a href="#Option说明" class="headerlink" title="Option说明"></a>Option说明</h4><ol>
-<li>Option正式代码中使用，不需要任何依赖。</li>
-<li>GsonOption正式代码中可以使用，需要引入Gson包，使用toString()方法可以转换为JSON结构的数据（支持function，详情看下面的function说明）。</li>
-<li>EnhancedOption测试专用，主要方便在浏览器中直接查看效果。</li>
-</ol>
-<h4 id="function说明"><a href="#function说明" class="headerlink" title="function说明"></a>function说明</h4><p>由于JSON标准中不包含function类型，因而大多数的JSON库都不直接支持这种类型，处理这种类型最简单的方式就是转换为JSON字符串时，对字符串进行处理。<br>虽然像jackson json和fastjson通过注解或者自定义的实现序列化接口可以实现，毕竟和JSON库的结合太密切了，而且使用起来也很麻烦，不如直接处理字符串，或者在js中处理。<br>本项目中提供了GSON实现的GsonOption，就是重写了toString()方法，改为输出JSON结构的字符串，并且支持以下两种function形式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    formatter:function(value)&#123;</div><div class="line">        return value.substring(0,8);</div><div class="line">    &#125;&#125;//和&#123;</div><div class="line">    formatter:(function()&#123;</div><div class="line">        return &apos;Temperature : &lt;br/&gt;&#123;b&#125;km : &#123;c&#125;°C&apos;;</div><div class="line">    &#125;)()</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>当然这种形式在Java中书写的时候有着严格的要求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">option.tooltip().trigger(Trigger.axis).formatter(&quot;function(value)&#123;return value.substring(0,8);&#125;&quot;);option.tooltip().trigger(Trigger.axis).formatter(&quot;(function()&#123;return &apos;Temperature : &lt;br/&gt;&#123;b&#125;km : &#123;c&#125;°C&apos;;&#125;)()&quot;);</div></pre></td></tr></table></figure></p>
-<ol>
-<li><p>先看第一种，这里的”function中，双引号和function必须连着，中间不能存在空格，否则不会识别。然后是结尾的}”，这里也必须连着不能有空格，在首尾这两段代码之间不能出现}”，否则会判断出错。如果在{}中的代码有字符串，请使用单引号’，双引号出现在单引号内时使用\”即可。除此之外没有别的限制。</p>
-</li>
-<li><p>再看第二种，这里的”(function中，双引号、括号和function必须连着，中间不能存在空格，否则不会识别。然后是结尾的})()”，这里也必须连着不能有空格，在首尾这两段代码之间不能出现})()”，否则会判断出错。如果在{}中的代码有字符串，请使用单引号’，双引号出现在单引号内时使用\”即可。除此之外没有别的限制。</p>
-</li>
-</ol>
-<h6 id="上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"><a href="#上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option" class="headerlink" title="上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"></a>上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option</h6>
+        <p>UIkit 是 YOOtheme 团队开发的一款轻量级、模块化的前端框架，可快速构建强大的web前端界面。UIKit提供了全面的HTML、CSS及JS组件，它们使用简单，容易定制和扩展。<br>它基于LESS开发，代码结构清晰简单，易于扩展和维护，并且具有体积小、反应灵敏的响应式组件，你可以根据 UIKit 基本的风格样式，轻松地自定义创建出自己喜欢的主题样式。<br><a id="more"></a></p>
+<h2 id="HTML页面代码"><a href="#HTML页面代码" class="headerlink" title="HTML页面代码"></a>HTML页面代码</h2><p>首先，确保你有一个可靠的代码编辑器，比如 Sublime Text 2。你需要在你的HTML5的文档头部添加编译后的UIKit CSS和JavaScript文件，最好是压缩后的版本。别忘了添加 jQuery。就是这样！</p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;title&gt;&lt;/title&gt;</div><div class="line">        &lt;link rel=&quot;stylesheet&quot; href=&quot;uikit.min.css&quot; /&gt;</div><div class="line">        &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</div><div class="line">        &lt;script src=&quot;uikit.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;/head&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">    &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -422,11 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ECharts/" rel="tag"># ECharts</a>
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-            <a href="/tags/报表/" rel="tag"># 报表</a>
+            <a href="/tags/Web前端/" rel="tag"># Web前端</a>
           
         </div>
       
@@ -439,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/15/apachepig/" rel="next" title="使用 Apache Pig 处理数据">
-                <i class="fa fa-chevron-left"></i> 使用 Apache Pig 处理数据
+              <a href="/2017/02/16/echarts-java/" rel="next" title="ECharts-Java 详细介绍">
+                <i class="fa fa-chevron-left"></i> ECharts-Java 详细介绍
               </a>
             
           </div>
@@ -448,10 +399,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/21/UIkit/" rel="prev" title="UIkit">
-                UIkit <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,10 +413,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/16/echarts-java/"
-     data-title="ECharts-Java 详细介绍"
+        <div class="ds-share flat" data-thread-key="2017/02/21/UIkit/"
+     data-title="UIkit"
      data-content=""
-     data-url="https://qiushijun.github.io/2017/02/16/echarts-java/">
+     data-url="https://qiushijun.github.io/2017/02/21/UIkit/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -499,8 +446,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/16/echarts-java/"
-           data-title="ECharts-Java 详细介绍" data-url="https://qiushijun.github.io/2017/02/16/echarts-java/">
+      <div class="ds-thread" data-thread-key="2017/02/21/UIkit/"
+           data-title="UIkit" data-url="https://qiushijun.github.io/2017/02/21/UIkit/">
       </div>
     
   </div>
@@ -613,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于本项目的最新状态和更新日志请看"><span class="nav-number">1.</span> <span class="nav-text">关于本项目的最新状态和更新日志请看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目支持"><span class="nav-number">2.</span> <span class="nav-text">项目支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图表类型"><span class="nav-number">2.1.</span> <span class="nav-text">图表类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECharts组件"><span class="nav-number">2.2.</span> <span class="nav-text">ECharts组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Option说明"><span class="nav-number">2.3.</span> <span class="nav-text">Option说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#function说明"><span class="nav-number">2.4.</span> <span class="nav-text">function说明</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option"><span class="nav-number">2.4.0.1.</span> <span class="nav-text">上述对function的处理很简单，不限制在formatter使用，所有值都能这么写，你可以参考写出自己的Option</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML页面代码"><span class="nav-number">1.</span> <span class="nav-text">HTML页面代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Example</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
