@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Elasticsearch,Lucene," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Elasticsearch 是一个建立在全文搜索引擎 Apache Lucene(TM) 基础上的搜索 引擎,可以说 Lucene 是当今最先进,最高效的全功能开源搜索引擎框架。但是 Lucene 只是一个框架,要充分利用它的功能,你需要使用 JAVA,并且在 你的程序中集成 Lucene。更糟的是,你需要做很多的学习了解,才能明白它是 如何运行的,Lucene 确实非常复杂。Elasticsea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch 学习： Java API (一)">
+<meta property="og:url" content="https://qiushijun.github.io/2017/02/22/elasticsearch_1/index.html">
+<meta property="og:site_name" content="三湘古邑">
+<meta property="og:description" content="Elasticsearch 是一个建立在全文搜索引擎 Apache Lucene(TM) 基础上的搜索 引擎,可以说 Lucene 是当今最先进,最高效的全功能开源搜索引擎框架。但是 Lucene 只是一个框架,要充分利用它的功能,你需要使用 JAVA,并且在 你的程序中集成 Lucene。更糟的是,你需要做很多的学习了解,才能明白它是 如何运行的,Lucene 确实非常复杂。Elasticsea">
+<meta property="og:updated_time" content="2017-02-22T13:16:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch 学习： Java API (一)">
+<meta name="twitter:description" content="Elasticsearch 是一个建立在全文搜索引擎 Apache Lucene(TM) 基础上的搜索 引擎,可以说 Lucene 是当今最先进,最高效的全功能开源搜索引擎框架。但是 Lucene 只是一个框架,要充分利用它的功能,你需要使用 JAVA,并且在 你的程序中集成 Lucene。更糟的是,你需要做很多的学习了解,才能明白它是 如何运行的,Lucene 确实非常复杂。Elasticsea">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qiushijun.github.io/2017/02/22/elasticsearch_1/"/>
+
+
+
+
+
+  <title> Elasticsearch 学习： Java API (一) | 三湘古邑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">三湘古邑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">我想在那里最蓝的大海扬帆。</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/02/22/elasticsearch_1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="三湘古邑">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="三湘古邑">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="三湘古邑" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Elasticsearch 学习： Java API (一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T21:01:26+08:00">
+                2017-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/22/elasticsearch_1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/elasticsearch_1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Elasticsearch 是一个建立在全文搜索引擎 Apache Lucene(TM) 基础上的搜索 引擎,可以说 Lucene 是当今最先进,最高效的全功能开源搜索引擎框架。<br>但是 Lucene 只是一个框架,要充分利用它的功能,你需要使用 JAVA,并且在 你的程序中集成 Lucene。更糟的是,你需要做很多的学习了解,才能明白它是 如何运行的,Lucene 确实非常复杂。<br>Elasticsearch 使用 Lucene 作为内部引擎,但是在你使用它做全文搜索时,只 需要使用统一开发好的API即可,而并不需要了解其背后复杂的 Lucene 的运行 原理。<br><a id="more"></a><br>当然 Elasticsearch 并不仅仅是 Lucene 那么简单,它不仅包括了全文搜索功 能,还可以进行以下工作:<br>分布式实时文件存储,并将每一个字段都编入索引,使其可以被搜索。 实时分析的分布式搜索引擎。 可以扩展到上百台服务器,处理PB级别的结构化或非结构化数据。<br>这么多的功能被集成到一台服务器上,你可以轻松地通过客户端或者任何你喜欢 的程序语言与 ES 的 RESTful API 进行交流。<br>Elasticsearch 的上手是非常简单的。它附带了很多非常合理的默认值,这让初 学者很好地避免一上手就要面对复杂的理论,它安装好了就可以使用了,用很小 的学习成本就可以变得很有生产力。</p>
+<h4 id="Java-API"><a href="#Java-API" class="headerlink" title="Java API"></a>Java API</h4><p>Elasticsearch 内置了两个客户端,你可以在你的代码 中使用:<br>＊ 节点客户端: 节点客户端以一个 无数据节点 的身份加入了一个集群。换句话 说,它自身是没有任何数据的,但是他知道什么数据在集群中的哪一个节点上, 然后就可以请求转发到正确的节点上并进行连接。<br>＊ 传输客户端: 更加轻量的传输客户端可以被用来向远程集群发送请求。他并不加 入集群本身,而是把请求转发到集群中的节点。<br>这两个客户端都使用 Elasticsearch 的 传输 协议,通过9300端口与 java 客户 端进行通信。集群中的各个节点也是通过9300端口进行通信。如果这个端口被 禁止了,那么你的节点们将不能组成一个集群。</p>
+<h6 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">TransportClient client = TransportClient.builder()</div><div class="line">    .build()</div><div class="line">    .addTransportAddress(new InetSocketTransportAddress(InetAddress</div><div class="line">    .getByName(&quot;localhost&quot;), 9300));</div></pre></td></tr></table></figure>
+<h6 id="Index-API-创建-Index-并且插入-Document"><a href="#Index-API-创建-Index-并且插入-Document" class="headerlink" title="Index API 创建 Index 并且插入 Document"></a>Index API 创建 Index 并且插入 Document</h6><p>创建索引有很多种方法，这里列举常用的 2 种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">HashMap&lt;String, Object&gt; json = new HashMap&lt;String, Object&gt;();</div><div class="line">json.put(&quot;first_name&quot;,&quot;Shuang&quot;);</div><div class="line">json.put(&quot;last_name&quot;, &quot;Peng&quot;);</div><div class="line">json.put(&quot;age&quot;, 24);</div><div class="line">json.put(&quot;about&quot;, &quot;I love coding&quot;);</div><div class="line">IndexResponse response = client</div><div class="line">    .prepareIndex(&quot;tseg&quot;,&quot;students&quot;,&quot;1&quot;)</div><div class="line">    .setSource(json).get();</div><div class="line"></div><div class="line">IndexResponse response = client.prepareIndex(&quot;tseg&quot;,&quot;students&quot;,&quot;1&quot;)</div><div class="line">   .setSource(jsonBuilder()</div><div class="line">   .startObject()</div><div class="line">   .field(&quot;first_name&quot;, &quot;Shuang&quot;)</div><div class="line">   .field(&quot;first_name&quot;, &quot;Peng&quot;)</div><div class="line">   .field(&quot;age&quot;, 24)</div><div class="line">   .field(&quot;about&quot;, &quot;I love coding&quot;)</div><div class="line">   .endObject())</div><div class="line">   .get();</div></pre></td></tr></table></figure></p>
+<p>注意：Index API 只能用于创建 index，类似于关系型数据库里面的 create table，他不能对已有的数据库进行添加。追加操作可以用后面会提到的 Update 或者 Bulk 来完成。</p>
+<h6 id="Get-API-获取-Document"><a href="#Get-API-获取-Document" class="headerlink" title="Get API 获取 Document"></a>Get API 获取 Document</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GetResponse response2 = client.prepareGet(&quot;tseg&quot;, &quot;students&quot;, &quot;1&quot;).get();</div><div class="line">Map&lt;String, Object&gt; res = response2.getSource();</div><div class="line">for (Map.Entry&lt;String, Object&gt; entry: res.entrySet())&#123;</div><div class="line">     System.out.println(entry.getKey() + &quot; : &quot; + entry.getValue());</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h6 id="Delete-API-删除-Index-或者-Document"><a href="#Delete-API-删除-Index-或者-Document" class="headerlink" title="Delete API 删除 Index 或者 Document"></a>Delete API 删除 Index 或者 Document</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 用来删除对应的 document </div><div class="line">DeleteResponse response3 = </div><div class="line">    client.prepareDelete(&quot;tesg&quot;,&quot;students&quot;,&quot;1&quot;).get();</div><div class="line">// 用来删除对应的 index</div><div class="line">DeleteIndexResponse response4 = </div><div class="line">    client.admin().indices().prepareDelete(&quot;facebook&quot;).execute().actionGet();</div></pre></td></tr></table></figure>
+<h6 id="Update-API-更新操作"><a href="#Update-API-更新操作" class="headerlink" title="Update API 更新操作"></a>Update API 更新操作</h6><p>更新操作也有两种方法。建议使用第一种，第二种太复杂了。。。看看就好。</p>
+<p>第一种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">client.prepareUpdate(&quot;tseg&quot;, &quot;students&quot;, &quot;1&quot;)</div><div class="line">    .setDoc(jsonBuilder()</div><div class="line">    .startObject().field(&quot;age&quot;, 32)</div><div class="line">    .endObject())</div><div class="line">    .get();</div></pre></td></tr></table></figure></p>
+<p>第二种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">IndexRequest indexRequest = new IndexRequest(&quot;tseg&quot;, &quot;students&quot;, &quot;1&quot;)</div><div class="line">    .source(jsonBuilder()</div><div class="line">    .startObject()</div><div class="line">    .field(&quot;first_name&quot;, &quot;Shuang&quot;)</div><div class="line">    .field(&quot;last_name&quot;, &quot;Peng&quot;)</div><div class="line">    .field(&quot;age&quot;, 32)</div><div class="line">    .field(&quot;about&quot;, &quot;I loving coding&quot;)</div><div class="line">    .endObject());</div><div class="line"></div><div class="line">UpdateRequest updateRequest = new UpdateRequest(&quot;tseg&quot;,&quot;students&quot;, &quot;1&quot;)</div><div class="line">    .doc(jsonBuilder()</div><div class="line">    .startObject().field(&quot;age&quot;, 32)</div><div class="line">    .endObject())</div><div class="line">    .upsert(indexRequest);</div><div class="line"> client.update(updateRequest).get();</div></pre></td></tr></table></figure></p>
+<p>不过这里提一下第二种方法，如果对应的 field 不存在的话，则更新操作自动变为插入操作，否则，就是正常的修改操作。</p>
+<h6 id="Multi-Get-API-多查找"><a href="#Multi-Get-API-多查找" class="headerlink" title="Multi Get API 多查找"></a>Multi Get API 多查找</h6><p>MultiGetResponse API 可以一次返回多个要查找的值。下面介绍了两种方法，一种是返回一个 Map，我们可以按照不同的 field 取值；第二种方法是直接返回一个字符串（Json格式）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">MultiGetResponse multiGetItemResponses = client.prepareMultiGet()</div><div class="line">    .add(&quot;tseg&quot;, &quot;students&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;).get();</div><div class="line"></div><div class="line">for (MultiGetItemResponse itemResponses : multiGetItemResponses) &#123;</div><div class="line">    GetResponse response5 = itemResponses.getResponse();</div><div class="line">    if (response5.isExists()) &#123;</div><div class="line">    </div><div class="line">// 第一种用法</div><div class="line">    Map&lt;String, Object&gt; fields = response5.getSource();</div><div class="line">    System.out.println(fields.get(&quot;first_name&quot;));</div><div class="line"></div><div class="line">// 第二种用法</div><div class="line">    String json2 = response5.getSourceAsString();</div><div class="line">    System.out.println(json2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h6 id="Bulk-API-批量操作"><a href="#Bulk-API-批量操作" class="headerlink" title="Bulk API 批量操作"></a>Bulk API 批量操作</h6><p>Bulk API允许批量提交index和delete请求， 如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">BulkRequestBuilder bulkRequest = client.prepareBulk();</div><div class="line">bulkRequest.add(client.prepareIndex(&quot;tseg&quot;, &quot;students&quot;, &quot;1&quot;)</div><div class="line">           .setSource(jsonBuilder()</div><div class="line">           .startObject()</div><div class="line">           .field(&quot;first_name&quot;, &quot;Allen&quot;)</div><div class="line">           .field(&quot;last_name&quot;, &quot;Peng&quot;)</div><div class="line">           .field(&quot;age&quot;, &quot;22&quot;)</div><div class="line">           .endObject()))</div><div class="line">           .get();</div><div class="line">           </div><div class="line">bulkRequest.add(client.prepareIndex(&quot;tseg&quot;, &quot;students&quot;, &quot;2&quot;))</div><div class="line">            .setSource(jsonBuilder()</div><div class="line">            .startObject()</div><div class="line">            .field(&quot;first_name&quot;, &quot;Hou&quot;)</div><div class="line">            .field(&quot;last_name&quot;, &quot;Xue&quot;)</div><div class="line">            .field(&quot;age&quot;, &quot;30&quot;)</div><div class="line">            .endObject()))</div><div class="line">            .get();</div><div class="line"></div><div class="line">HashMap&lt;String, Object&gt; json2 = new HashMap&lt;String, Object&gt;();</div><div class="line">List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">list.add(&quot;music&quot;);</div><div class="line">list.add(&quot;football&quot;);</div><div class="line">json2.put(&quot;first_name&quot;, &quot;Peng&quot;);</div><div class="line">json2.put(&quot;last_name&quot;, &quot;Peng&quot;);</div><div class="line">json2.put(&quot;interests&quot;, list);</div><div class="line">BulkRequestBuilder bulkRequest2 = client.prepareBulk();</div><div class="line"></div><div class="line">// 两种执行方法，个人倾向于第一种</div><div class="line">bulkRequest2.add(client.prepareIndex(&quot;facebook&quot;, &quot;info&quot;, </div><div class="line">    &quot;3&quot;).setSource(json2)).get();</div><div class="line">// 第二种方法</div><div class="line">bulkRequest2.add(client.prepareIndex(&quot;facebook&quot;, </div><div class="line">    &quot;info&quot;,&quot;1&quot;).setSource(json2)).execute().actionGet();</div></pre></td></tr></table></figure></p>
+<p>还可以这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BulkRequestBuilder bulkRequest = client.prepareBulk();</div><div class="line">bulkRequest.add(client.prepareIndex(&quot;index1&quot;, &quot;type1&quot;, &quot;id1&quot;)</div><div class="line">    .setSource(source);</div><div class="line">bulkRequest.add(client.prepareIndex(&quot;index2&quot;, &quot;type2&quot;, &quot;id2&quot;)</div><div class="line">    .setSource(source);</div><div class="line">BulkResponse bulkResponse = bulkRequest.execute().actionGet();</div></pre></td></tr></table></figure></p>
+<h6 id="Bulk-Processor-API-可在批量操作完成之前和之后进行相应的操作"><a href="#Bulk-Processor-API-可在批量操作完成之前和之后进行相应的操作" class="headerlink" title="Bulk Processor API 可在批量操作完成之前和之后进行相应的操作"></a>Bulk Processor API 可在批量操作完成之前和之后进行相应的操作</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">BulkProcessor bulkProcessor = BulkProcessor.builder(</div><div class="line">        client,  </div><div class="line">        new BulkProcessor.Listener() &#123;</div><div class="line">            @Override</div><div class="line">            public void beforeBulk(long executionId,</div><div class="line">                                  BulkRequest request) &#123; ... &#125; </div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void afterBulk(long executionId,</div><div class="line">                                  BulkRequest request,</div><div class="line">                                  BulkResponse response) &#123; ... &#125; </div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void afterBulk(long executionId,</div><div class="line">                                  BulkRequest request,</div><div class="line">                                  Throwable failure) &#123; ... &#125; </div><div class="line">        &#125;)</div><div class="line">        .setBulkActions(10000) </div><div class="line">        .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB)) </div><div class="line">        .setFlushInterval(TimeValue.timeValueSeconds(5)) </div><div class="line">        .setConcurrentRequests(1) </div><div class="line">         .build();</div><div class="line">         </div><div class="line">bulkProcessor.add(new IndexRequest(&quot;index1&quot;, &quot;type1&quot;, &quot;id1&quot;).source(source1));  </div><div class="line">bulkProcessor.add(new DeleteRequest(&quot;index2&quot;, &quot;type2&quot;, &quot;id2&quot;);</div></pre></td></tr></table></figure>
+<p>＊ beforeBulk 会在批量提交之前执行，可以从 BulkRequest 中获取请求信息request.requests() 或者请求数量 request.numberOfActions()。<br>＊ 第一个 afterBulk 会在批量成功后执行，可以跟 beforeBulk 配合计算批量所需时间。<br>＊ 第二个 afterBulk 会在批量失败后执行。<br>＊ 在例子中，当请求超过 10000 个（default=1000）或者总大小超过1GB（default=5MB）时，触发批量提交动作。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          
+            <a href="/tags/Lucene/" rel="tag"># Lucene</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/21/UIkit/" rel="next" title="UIkit">
+                <i class="fa fa-chevron-left"></i> UIkit
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/02/22/elasticsearch_1/"
+     data-title="Elasticsearch 学习： Java API (一)"
+     data-content=""
+     data-url="https://qiushijun.github.io/2017/02/22/elasticsearch_1/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/22/elasticsearch_1/"
+           data-title="Elasticsearch 学习： Java API (一)" data-url="https://qiushijun.github.io/2017/02/22/elasticsearch_1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="三湘古邑" />
+          <p class="site-author-name" itemprop="name">三湘古邑</p>
+          <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qiushijun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/qiushijun" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-API"><span class="nav-number">1.</span> <span class="nav-text">Java API</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#建立连接"><span class="nav-number">1.0.1.</span> <span class="nav-text">建立连接</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Index-API-创建-Index-并且插入-Document"><span class="nav-number">1.0.2.</span> <span class="nav-text">Index API 创建 Index 并且插入 Document</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Get-API-获取-Document"><span class="nav-number">1.0.3.</span> <span class="nav-text">Get API 获取 Document</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Delete-API-删除-Index-或者-Document"><span class="nav-number">1.0.4.</span> <span class="nav-text">Delete API 删除 Index 或者 Document</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Update-API-更新操作"><span class="nav-number">1.0.5.</span> <span class="nav-text">Update API 更新操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Multi-Get-API-多查找"><span class="nav-number">1.0.6.</span> <span class="nav-text">Multi Get API 多查找</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bulk-API-批量操作"><span class="nav-number">1.0.7.</span> <span class="nav-text">Bulk API 批量操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bulk-Processor-API-可在批量操作完成之前和之后进行相应的操作"><span class="nav-number">1.0.8.</span> <span class="nav-text">Bulk Processor API 可在批量操作完成之前和之后进行相应的操作</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">三湘古邑</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qiushijun"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
