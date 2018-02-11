@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。Vim 的部分增强功能包括文件比较（vimdiff），语法高亮，全面的帮助系统，本地脚本（Vimscript），和便于选择的可视化模式。 Vim 专注于键盘操作，它并不是像 nano 或 pico 一样的简单编辑器。Vim 需要花时间来学习，并值得花上更多的时间来掌握。">
+<meta name="description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vim 教程">
 <meta property="og:url" content="https://qiushijun.github.io/2017/12/24/vim001/index.html">
-<meta property="og:site_name" content="三湘古邑">
-<meta property="og:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。Vim 的部分增强功能包括文件比较（vimdiff），语法高亮，全面的帮助系统，本地脚本（Vimscript），和便于选择的可视化模式。 Vim 专注于键盘操作，它并不是像 nano 或 pico 一样的简单编辑器。Vim 需要花时间来学习，并值得花上更多的时间来掌握。">
-<meta property="og:updated_time" content="2017-12-24T15:29:53.599Z">
+<meta property="og:site_name" content="湘满楼">
+<meta property="og:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。">
+<meta property="og:updated_time" content="2017-12-25T14:15:01.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim 教程">
-<meta name="twitter:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。Vim 的部分增强功能包括文件比较（vimdiff），语法高亮，全面的帮助系统，本地脚本（Vimscript），和便于选择的可视化模式。 Vim 专注于键盘操作，它并不是像 nano 或 pico 一样的简单编辑器。Vim 需要花时间来学习，并值得花上更多的时间来掌握。">
+<meta name="twitter:description" content="Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title> Vim 教程 | 三湘古邑 </title>
+  <title> Vim 教程 | 湘满楼 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -165,7 +165,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">三湘古邑</span>
+      <span class="site-title">湘满楼</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -270,15 +270,15 @@
   <link itemprop="mainEntityOfPage" href="https://qiushijun.github.io/2017/12/24/vim001/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="三湘古邑">
+    <meta itemprop="name" content="湘满楼">
     <meta itemprop="description" content="">
     <meta itemprop="image" content="/images/avatar.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="三湘古邑">
+    <meta itemprop="name" content="湘满楼">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="三湘古邑" src="">
+      <img style="display:none;" itemprop="url image" alt="湘满楼" src="">
     </span>
   </span>
 
@@ -385,7 +385,7 @@
       
 
       
-        <p>Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。Vim 的部分增强功能包括文件比较（vimdiff），语法高亮，全面的帮助系统，本地脚本（Vimscript），和便于选择的可视化模式。 Vim 专注于键盘操作，它并不是像 nano 或 pico 一样的简单编辑器。Vim 需要花时间来学习，并值得花上更多的时间来掌握。<br><a id="more"></a></p>
+        <p>Vim 是 UNIX 文本编辑器 Vi 的加强版本,加入了更多特性来帮助编辑源代码。<br><a id="more"></a><br>Vim 的部分增强功能包括文件比较（vimdiff），语法高亮，全面的帮助系统，本地脚本（Vimscript），和便于选择的可视化模式。 Vim 专注于键盘操作，它并不是像 nano 或 pico 一样的简单编辑器。Vim 需要花时间来学习，并值得花上更多的时间来掌握。</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>要学习一些基本的Vim使用操作，可以打开Vim使用<code>:h</code>获取帮助系统的相关信息<br>vim的三种模式：一般模式、编辑模式、命令模式。这需要你牢记的，因为以前笔者刚刚从事linux工作的时候去面试，很多单位的笔试题就有这个知识点。</p>
 <ul>
 <li><p>一般模式：当你vim filename 编辑一个文件时，一进入该文件就是一般模式了。在这个模式下，你可以做的操作有，上下移动光标；删除某个字符；删除某行；复制、粘贴一行或者多行。</p>
@@ -733,6 +733,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/01/01/nexus001/" rel="prev" title="Nexus3 上传Jar">
+                Nexus3 上传Jar <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -796,8 +800,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
-               alt="三湘古邑" />
-          <p class="site-author-name" itemprop="name">三湘古邑</p>
+               alt="湘满楼" />
+          <p class="site-author-name" itemprop="name">湘满楼</p>
           <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
         </div>
         <nav class="site-state motion-element">
@@ -805,7 +809,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -814,7 +818,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -823,7 +827,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -899,11 +903,11 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">三湘古邑</span>
+  <span class="author" itemprop="copyrightHolder">湘满楼</span>
 </div>
 
 
